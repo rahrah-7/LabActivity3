@@ -20,9 +20,13 @@ class MainActivity : AppCompatActivity() {
 
         
         findViewById<Button>(R.id.clickMeButton).setOnClickListener {
-            displayTextView.text = "Hello, ${findViewById<EditText>(R.id.nameEditText).text}"
+            val editBox = findViewById<EditText>(R.id.nameEditText);
+            if(editBox.text.isEmpty()){
+                editBox.error = "Entry Needed";
+            }
+            else {
+                displayTextView.text = "Hello, ${editBox.text}"
+            }
         }
-
-
     }
 }
